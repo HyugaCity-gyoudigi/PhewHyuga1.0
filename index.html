@@ -1,0 +1,976 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+　　<meta name="robots" content="noindex">
+    <title>ヒュー！日向「リラックス・サーフタウン」ロゴ・イラスト集</title>
+    <style>
+        :root {
+            --blue-strong: #d8ecff;
+            --blue-soft: #eaf5ff;
+            --blue-pale: #f4faff;
+            --blue-bg: #f7fbff;
+            --blue-line: #9fc6ea;
+            --text-main: #2e4e68;
+            --text-sub: #5d7a92;
+            --shadow: rgba(76, 126, 171, 0.16);
+            --overlay: rgba(42, 82, 120, 0.42);
+            --white: #ffffff;
+            --card-bg: #ffffff;
+            --thumb-bg: #eef7ff;
+            --btn-hover: #c7e4ff;
+            --toolbar-bg: #eef7ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+            color: var(--text-main);
+            background: linear-gradient(180deg, #fafdff 0%, var(--blue-bg) 100%);
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 48px;
+        }
+
+        .header {
+            background: linear-gradient(180deg, #f7fbff 0%, #eaf5ff 100%);
+            border: 1px solid var(--blue-line);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 24px var(--shadow);
+            margin-bottom: 22px;
+        }
+
+        .title-main {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .title-main h1 {
+            margin: 0;
+            font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+
+        .header-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 24px 20px;
+            gap: 12px;
+            justify-content: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .header-btn {
+            appearance: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid var(--blue-line);
+            background: var(--blue-strong);
+            color: var(--text-main);
+            border-radius: 999px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 14px var(--shadow);
+            transition: transform 0.15s ease, background 0.2s ease;
+        }
+
+        .header-btn:hover {
+            transform: translateY(-1px);
+            background: var(--btn-hover);
+        }
+
+        .status {
+            margin-top: 10px;
+            text-align: left;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .category-section {
+            margin: 24px 0 18px;
+        }
+
+        .section-title {
+            margin: 0 0 12px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-btn {
+            appearance: none;
+            border: 1px solid var(--blue-line);
+            background: #ffffff;
+            color: var(--text-main);
+            border-radius: 999px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(76, 126, 171, 0.10);
+            transition: all 0.2s ease;
+        }
+
+        .category-btn:hover {
+            background: var(--blue-soft);
+            transform: translateY(-1px);
+        }
+
+        .category-btn.active {
+            background: var(--blue-strong);
+            border-color: #7db4e3;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0 16px;
+            padding: 14px 16px;
+            background: var(--toolbar-bg);
+            border: 1px solid var(--blue-line);
+            border-radius: 14px;
+        }
+
+        .current-category {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .count {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(159, 198, 234, 0.85);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(76, 126, 171, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(76, 126, 171, 0.18);
+        }
+
+        .thumb-wrap {
+            position: relative;
+            height: 220px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--thumb-bg);
+            overflow: hidden;
+        }
+
+        .thumb-wrap.has-preview {
+            cursor: zoom-in;
+        }
+
+        .thumb-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            background: transparent;
+        }
+
+        .thumb-placeholder {
+            width: 100%;
+            height: 100%;
+            border: 1px dashed var(--blue-line);
+            border-radius: 12px;
+            background: linear-gradient(180deg, #fafdff 0%, #eef7ff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+            padding: 16px;
+            color: var(--text-sub);
+        }
+
+        .thumb-placeholder strong {
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .thumb-placeholder small {
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .zoom-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--overlay);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .thumb-wrap.has-preview:hover .zoom-overlay,
+        .thumb-wrap.has-preview:focus-within .zoom-overlay {
+            opacity: 1;
+        }
+
+        .zoom-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .card-body {
+            padding: 12px 12px 14px;
+        }
+
+        .file-name {
+            margin: 0 0 6px;
+            font-size: 0.96rem;
+            color: var(--text-main);
+            word-break: break-all;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .file-meta {
+            margin: 0 0 12px;
+            font-size: 0.84rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+            min-height: 2.5em;
+            word-break: break-word;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-width: 0;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 8px 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            transition: background 0.2s ease, transform 0.15s ease;
+            background: #eaf5ff;
+            color: var(--text-main);
+            border: 1px solid #9fc6ea;
+            white-space: nowrap;
+        }
+
+        .btn-download:hover {
+            background: var(--btn-hover);
+            transform: translateY(-1px);
+        }
+
+        .empty,
+        .error {
+            padding: 26px 18px;
+            background: #ffffff;
+            border: 1px solid var(--blue-line);
+            border-radius: 14px;
+            color: var(--text-sub);
+            text-align: center;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.76);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1000;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            width: min(1100px, 100%);
+            max-height: 90vh;
+            background: #fafdff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(159, 198, 234, 0.95);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--blue-strong);
+            border-bottom: 1px solid var(--blue-line);
+        }
+
+        .modal-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            word-break: break-all;
+        }
+
+        .modal-close {
+            border: 1px solid var(--blue-line);
+            background: #ffffff;
+            color: var(--text-main);
+            border-radius: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .modal-close:hover {
+            background: var(--blue-soft);
+        }
+
+        .modal-image-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            background: #fafdff;
+            max-height: calc(90vh - 64px);
+            overflow: auto;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: calc(90vh - 100px);
+            object-fit: contain;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .modal.prohibit-mode .modal-image-wrap {
+            display: block;
+            padding: 14px;
+            max-height: calc(90vh - 64px);
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+        .modal.prohibit-mode .modal-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: none;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+
+        .extension-note-section {
+            background: var(--card-bg);
+            border: 1px solid var(--blue-line);
+            border-radius: 18px;
+            padding: 20px 22px;
+            box-shadow: 0 8px 20px var(--shadow);
+            margin-bottom: 22px;
+        }
+
+        .extension-note-title {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .extension-note-list {
+            margin: 0;
+            padding-left: 1.4em;
+            color: var(--text-sub);
+            line-height: 1.9;
+        }
+
+        .extension-note-list li + li {
+            margin-top: 6px;
+        }
+
+        .footer-contact {
+            margin-top: 28px;
+            background: linear-gradient(180deg, #f7fbff 0%, #eaf5ff 100%);
+            border: 1px solid var(--blue-line);
+            border-radius: 18px;
+            padding: 18px 22px;
+            box-shadow: 0 10px 24px var(--shadow);
+        }
+
+        .footer-contact-title {
+            margin: 0 0 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .footer-contact p {
+            margin: 4px 0;
+            color: var(--text-sub);
+            line-height: 1.8;
+        }
+
+        .footer-contact .department {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        @media (max-width: 640px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .thumb-wrap {
+                height: 180px;
+            }
+
+            .header {
+                padding: 18px;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header-btn {
+                width: 100%;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn-download {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="title-main">
+                <h1>サヒュー！日向「リラックス・サーフタウン」ロゴ・イラスト集</h1>
+            </div>
+
+            <div class="header-buttons">
+                <button id="prohibitBtn" class="header-btn" type="button">禁止事項はこちら</button>
+                <a class="header-btn" href="Illustrationmanual.pdf" download="Illustrationmanual.pdf">イラストマニュアル</a>
+                <a class="header-btn" href="Logomanual.pdf" download="Logomanual.pdf">ロゴマニュアル</a>
+                <a class="header-btn" href="../PhewHyuga2.0/ndex_Internet.html"
+                    target="_blank" rel="noopener noreferrer">ヒュー！日向「世界でいちばん、休める街へ」ロゴイラスト集</a>
+            </div>
+
+            <div id="status" class="status">読み込み中...</div>
+        </header>
+
+
+        <section class="extension-note-section" aria-labelledby="extension-note-title">
+            <h2 class="extension-note-title" id="extension-note-title">拡張子について</h2>
+            <ul class="extension-note-list">
+                <li>jpg：資料作成やWEBサイト等で使いやすい一般的な画像データです。</li>
+                <li>ai、psd、eps：印刷物や看板等の制作に適した高解像度・編集用データです。専用ソフト（Adobe Illustrator等）をお持ちでない場合はファイルを開くことができません。</li>
+            </ul>
+        </section>
+
+        <section class="category-section">
+            <h2 class="section-title">Category</h2>
+            <div id="categoryButtons" class="category-buttons"></div>
+        </section>
+
+        <section class="toolbar" aria-live="polite">
+            <div class="current-category" id="currentCategory">未選択</div>
+            <div class="count" id="imageCount">0件</div>
+        </section>
+
+        <main id="galleryArea">
+            <div class="empty">CSVを読み込んでいます...</div>
+        </main>
+
+        <footer class="footer-contact" aria-labelledby="footer-contact-title">
+            <h2 class="footer-contact-title" id="footer-contact-title">問合せ先</h2>
+            <p class="department">日向市経済戦略部ふるさとプロモーション課</p>
+            <p>TEL:0982-52-2111</p>
+            <p>EMAIL:f_promotion@hyugacity.jp</p>
+        </footer>
+    </div>
+
+    <div id="imageModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <div id="modalTitle" class="modal-title"></div>
+                <button id="modalClose" class="modal-close" type="button">閉じる</button>
+            </div>
+            <div class="modal-image-wrap">
+                <img id="modalImage" class="modal-image" src="" alt="拡大画像" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            items: [],
+            grouped: new Map(),
+            categories: [],
+            currentCategory: null
+        };
+
+        const PROHIBIT_IMAGE = "prohibit.png";
+        const PREVIEWABLE_EXTENSIONS = new Set(["png", "jpg", "jpeg", "gif", "webp", "svg", "bmp", "avif"]);
+        const PREVIEW_PRIORITY = ["png", "jpg", "jpeg", "webp", "svg", "gif", "bmp", "avif"];
+
+        const statusEl = document.getElementById("status");
+        const categoryButtonsEl = document.getElementById("categoryButtons");
+        const galleryAreaEl = document.getElementById("galleryArea");
+        const currentCategoryEl = document.getElementById("currentCategory");
+        const imageCountEl = document.getElementById("imageCount");
+
+        const modalEl = document.getElementById("imageModal");
+        const modalImageEl = document.getElementById("modalImage");
+        const modalTitleEl = document.getElementById("modalTitle");
+        const modalCloseEl = document.getElementById("modalClose");
+
+        const prohibitBtn = document.getElementById("prohibitBtn");
+
+        function splitCSVLine(line) {
+            const result = [];
+            let current = "";
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                const next = line[i + 1];
+
+                if (char === '"') {
+                    if (inQuotes && next === '"') {
+                        current += '"';
+                        i++;
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === "," && !inQuotes) {
+                    result.push(current);
+                    current = "";
+                } else {
+                    current += char;
+                }
+            }
+
+            result.push(current);
+            return result.map(v => v.trim());
+        }
+
+        function parseCSV(text) {
+            const lines = text
+                .replace(/^\uFEFF/, "")
+                .replace(/\r\n/g, "\n")
+                .replace(/\r/g, "\n")
+                .split("\n")
+                .filter(line => line.trim().length > 0);
+
+            if (lines.length === 0) return [];
+
+            const rows = lines.map(splitCSVLine);
+            const header = rows[0].map(h => h.replace(/^"|"$/g, "").replace(/^\uFEFF/, "").trim());
+
+            const categoryIndex = header.findIndex(h => h.toLowerCase() === "category");
+            const nameIndex = header.findIndex(h => h.toLowerCase() === "name");
+
+            if (categoryIndex === -1 || nameIndex === -1) {
+                throw new Error('list.csv の1行目は "Category,Name" である必要があります。');
+            }
+
+            return rows
+                .slice(1)
+                .map(cols => {
+                    const category = (cols[categoryIndex] || "").replace(/^"|"$/g, "").trim();
+                    const name = (cols[nameIndex] || "").replace(/^"|"$/g, "").trim();
+                    return { category, name };
+                })
+                .filter(row => row.category && row.name);
+        }
+
+        function makeAssetPath(category, name) {
+            return encodeURI(`${category}/${name}`);
+        }
+
+        function getFileParts(fileName) {
+            const lastDotIndex = fileName.lastIndexOf(".");
+            if (lastDotIndex <= 0) {
+                return {
+                    fullName: fileName,
+                    baseName: fileName,
+                    extension: ""
+                };
+            }
+
+            return {
+                fullName: fileName,
+                baseName: fileName.slice(0, lastDotIndex),
+                extension: fileName.slice(lastDotIndex + 1).toLowerCase()
+            };
+        }
+
+        function isPreviewableExtension(extension) {
+            return PREVIEWABLE_EXTENSIONS.has(extension.toLowerCase());
+        }
+
+        function pickPreviewFile(files) {
+            const previewFiles = files.filter(file => isPreviewableExtension(file.extension));
+            if (previewFiles.length === 0) return null;
+
+            previewFiles.sort((a, b) => {
+                const indexA = PREVIEW_PRIORITY.indexOf(a.extension);
+                const indexB = PREVIEW_PRIORITY.indexOf(b.extension);
+                const scoreA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
+                const scoreB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
+                return scoreA - scoreB || a.name.localeCompare(b.name, "ja");
+            });
+
+            return previewFiles[0];
+        }
+
+        function groupItems(items) {
+            const groupedByCategory = new Map();
+            const categories = [];
+
+            items.forEach(item => {
+                const parts = getFileParts(item.name);
+                const categoryKey = item.category;
+
+                if (!groupedByCategory.has(categoryKey)) {
+                    groupedByCategory.set(categoryKey, new Map());
+                    categories.push(categoryKey);
+                }
+
+                const groupMap = groupedByCategory.get(categoryKey);
+
+                if (!groupMap.has(parts.baseName)) {
+                    groupMap.set(parts.baseName, {
+                        category: item.category,
+                        baseName: parts.baseName,
+                        files: []
+                    });
+                }
+
+                groupMap.get(parts.baseName).files.push({
+                    name: item.name,
+                    extension: parts.extension,
+                    path: makeAssetPath(item.category, item.name)
+                });
+            });
+
+            const grouped = new Map();
+
+            categories.forEach(category => {
+                const groups = Array.from(groupedByCategory.get(category).values())
+                    .map(group => {
+                        group.files.sort((a, b) => {
+                            const indexA = PREVIEW_PRIORITY.indexOf(a.extension);
+                            const indexB = PREVIEW_PRIORITY.indexOf(b.extension);
+                            const scoreA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
+                            const scoreB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
+                            return scoreA - scoreB || a.name.localeCompare(b.name, "ja");
+                        });
+                        group.previewFile = pickPreviewFile(group.files);
+                        return group;
+                    })
+                    .sort((a, b) => a.baseName.localeCompare(b.baseName, "ja"));
+
+                grouped.set(category, groups);
+            });
+
+            return { grouped, categories };
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#39;");
+        }
+
+        function renderCategoryButtons() {
+            categoryButtonsEl.innerHTML = "";
+
+            if (state.categories.length === 0) {
+                categoryButtonsEl.innerHTML = '<div class="empty">カテゴリがありません。</div>';
+                return;
+            }
+
+            state.categories.forEach(category => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "category-btn" + (category === state.currentCategory ? " active" : "");
+                btn.textContent = category;
+
+                btn.addEventListener("click", () => {
+                    state.currentCategory = category;
+                    renderCategoryButtons();
+                    renderGallery();
+                });
+
+                categoryButtonsEl.appendChild(btn);
+            });
+        }
+
+        function openModal(src, title, options = {}) {
+            const { prohibitMode = false } = options;
+
+            modalImageEl.src = src;
+            modalTitleEl.textContent = title;
+
+            if (prohibitMode) {
+                modalEl.classList.add("prohibit-mode");
+            } else {
+                modalEl.classList.remove("prohibit-mode");
+            }
+
+            modalEl.classList.add("open");
+            modalEl.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modalEl.classList.remove("open");
+            modalEl.classList.remove("prohibit-mode");
+            modalEl.setAttribute("aria-hidden", "true");
+            modalImageEl.src = "";
+            document.body.style.overflow = "";
+        }
+
+        function buildPlaceholderExtensions(files) {
+            const labels = files.map(file => file.extension ? file.extension.toUpperCase() : "FILE");
+            return Array.from(new Set(labels)).join(" / ");
+        }
+
+        function createCard(group) {
+            const hasPreview = Boolean(group.previewFile);
+            const displayName = group.baseName || (group.files[0] ? group.files[0].name : "");
+            const extensionText = buildPlaceholderExtensions(group.files);
+
+            const card = document.createElement("article");
+            card.className = "card";
+
+            const thumbHtml = hasPreview
+                ? `
+                    <div class="thumb-wrap has-preview">
+                        <img src="${group.previewFile.path}" alt="${escapeHtml(displayName)}" loading="lazy" />
+                        <div class="zoom-overlay" tabindex="0" role="button" aria-label="${escapeHtml(displayName)} を拡大表示">
+                            <span class="zoom-icon">🔍</span>
+                            <span>拡大</span>
+                        </div>
+                    </div>
+                `
+                : `
+                    <div class="thumb-wrap">
+                        <div class="thumb-placeholder" aria-label="プレビューなし">
+                            <strong>プレビューなし</strong>
+                            <small>${escapeHtml(extensionText)} のダウンロードに対応</small>
+                        </div>
+                    </div>
+                `;
+
+            const actionsHtml = group.files.map(file => {
+                const label = file.extension ? file.extension.toUpperCase() : "FILE";
+                return `<a class="btn-download" href="${file.path}" download="${escapeHtml(file.name)}">${escapeHtml(label)}</a>`;
+            }).join("");
+
+            const metaText = group.files.length > 1
+                ? `${group.files.length}種類のファイル: ${group.files.map(file => file.extension ? file.extension.toUpperCase() : "FILE").join(" / ")}`
+                : `ファイル形式: ${extensionText}`;
+
+            card.innerHTML = `
+                ${thumbHtml}
+                <div class="card-body">
+                    <p class="file-name">${escapeHtml(displayName)}</p>
+                    <p class="file-meta">${escapeHtml(metaText)}</p>
+                    <div class="actions">
+                        ${actionsHtml}
+                    </div>
+                </div>
+            `;
+
+            if (hasPreview) {
+                const previewPath = group.previewFile.path;
+                const previewTitle = group.previewFile.name;
+                const overlay = card.querySelector(".zoom-overlay");
+                const thumbWrap = card.querySelector(".thumb-wrap");
+                const imgEl = card.querySelector("img");
+
+                const open = () => openModal(previewPath, previewTitle);
+
+                overlay.addEventListener("click", open);
+                overlay.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        open();
+                    }
+                });
+
+                thumbWrap.addEventListener("dblclick", open);
+
+                imgEl.addEventListener("error", () => {
+                    thumbWrap.classList.remove("has-preview");
+                    thumbWrap.innerHTML = `
+                        <div class="thumb-placeholder" aria-label="画像を読み込めません">
+                            <strong>画像を読み込めません</strong>
+                            <small>${escapeHtml(group.category + "/" + group.previewFile.name)}</small>
+                        </div>
+                    `;
+                });
+            }
+
+            return card;
+        }
+
+        function renderGallery() {
+            const category = state.currentCategory;
+            const groups = category ? (state.grouped.get(category) || []) : [];
+
+            currentCategoryEl.textContent = category ? `選択中: ${category}` : "未選択";
+            imageCountEl.textContent = `${groups.length}件`;
+
+            if (!category) {
+                galleryAreaEl.innerHTML = '<div class="empty">カテゴリを選択してください。</div>';
+                return;
+            }
+
+            if (groups.length === 0) {
+                galleryAreaEl.innerHTML = '<div class="empty">このカテゴリにはファイルがありません。</div>';
+                return;
+            }
+
+            const gallery = document.createElement("div");
+            gallery.className = "gallery";
+
+            groups.forEach(group => {
+                gallery.appendChild(createCard(group));
+            });
+
+            galleryAreaEl.innerHTML = "";
+            galleryAreaEl.appendChild(gallery);
+        }
+
+        prohibitBtn.addEventListener("click", () => {
+            openModal(PROHIBIT_IMAGE, "禁止事項", { prohibitMode: true });
+        });
+
+        modalCloseEl.addEventListener("click", closeModal);
+
+        modalEl.addEventListener("click", (e) => {
+            if (e.target === modalEl) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modalEl.classList.contains("open")) {
+                closeModal();
+            }
+        });
+
+        async function init() {
+            try {
+                statusEl.textContent = "list.csv を読み込み中...";
+                const response = await fetch("list.csv", { cache: "no-store" });
+
+                if (!response.ok) {
+                    throw new Error(`list.csv の読み込みに失敗しました: ${response.status}`);
+                }
+
+                const csvText = await response.text();
+                const items = parseCSV(csvText);
+
+                state.items = items;
+                const { grouped, categories } = groupItems(items);
+                state.grouped = grouped;
+                state.categories = categories;
+                state.currentCategory = categories[0] || null;
+
+                renderCategoryButtons();
+                renderGallery();
+
+                statusEl.textContent = `読み込み完了: ${items.length}ファイル / ${categories.length}カテゴリ`;
+            } catch (error) {
+                console.error(error);
+                statusEl.textContent = "読み込みに失敗しました。";
+                categoryButtonsEl.innerHTML = "";
+                galleryAreaEl.innerHTML = `
+                    <div class="error">
+                        list.csv を読み込めませんでした。<br>
+                        1行目が <strong>Category,Name</strong> になっているか確認してください。<br>
+                        また、必要に応じてローカルサーバー上で開いてください。
+                    </div>
+                `;
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
